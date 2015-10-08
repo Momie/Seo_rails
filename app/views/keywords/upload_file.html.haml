@@ -1,0 +1,3 @@
+= form_tag upload_keywords_path ,:method => 'Post',multipart: true  do
+  = file_field_tag :keys, accept: '.csv'
+  = submit_tag("send")
