@@ -23,6 +23,15 @@
 #production:
 #  <<: *default
 #  database: db/production.sqlite3
+test:
+  adapter: postgresql
+  encoding: unicode
+  reconnect: false
+  database: seo
+  host: localhost
+  pool: 5
+  username: localhost
+  password: localhost
 
 development:
   adapter: postgresql

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007084854) do
+ActiveRecord::Schema.define(version: 20151009123730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,5 +73,28 @@ ActiveRecord::Schema.define(version: 20151007084854) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "words", force: :cascade do |t|
+    t.string   "word",               null: false
+    t.boolean  "state",              null: false
+    t.integer  "nb_adwords_top"
+    t.integer  "nb_adwords_right"
+    t.integer  "nb_adwords_all"
+    t.text     "top_adwords_urls"
+    t.text     "right_adwords_urls"
+    t.integer  "nb_no_adwords"
+    t.text     "no_adwords_urls"
+    t.integer  "nb_of_links"
+    t.integer  "all_results_count"
+    t.text     "html_cache"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "words", ["state", "all_results_count"], name: "index_words_on_state_and_all_results_count", using: :btree
+  add_index "words", ["state", "nb_adwords_all"], name: "index_words_on_state_and_nb_adwords_all", using: :btree
+  add_index "words", ["state", "nb_no_adwords"], name: "index_words_on_state_and_nb_no_adwords", using: :btree
+  add_index "words", ["state"], name: "index_words_on_state", using: :btree
+  add_index "words", ["word"], name: "index_words_on_word", unique: true, using: :btree
 
 end
