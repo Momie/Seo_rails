@@ -7,18 +7,19 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :keywords , only: :index do
         post 'upload'
-        get 'report'
       end
     end
   end
     #Routes for web devices
+  resources :reports
   resources :keywords , only: :index do
     collection do
-      post 'upload'
-      get 'upload_file'
-      get 'report'
-      get 'delete_all'
-      get 'queries'
+      post  'upload'
+      get   'upload_file'
+      get   'find'
+     # get   'report'
+     # get   'report/:id'
+      get   'queries'
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

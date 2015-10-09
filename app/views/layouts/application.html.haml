@@ -19,6 +19,17 @@
             %li
               %a{:href=>upload_file_keywords_path}
                 Upload
+            %li.dropdown
+              %a.dropdown-toggle{:'data-toggle'=>"dropdown",:role=>"button",:'aria-haspopup'=>"true",:'aria-expanded'=>"false"}
+                Report
+                %span.caret
+              %ul.dropdown-menu
+                %li
+                  = link_to "Create", reports_path(current_user.id), method: :post
+                %li.divider{:role=>"separator"}
+                %li  
+                  %a{:href=>reports_path}
+                    History            
     -unless notice.blank?
       %p.notice= notice
     -unless alert.blank?
