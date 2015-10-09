@@ -75,4 +75,11 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  
+  get "/resque/users/sign_in", to: redirect("/users/sign_in") 
+  
+  authenticate :user do 
+    mount Resque::Server, :at => "/resque"
+  end
+
 end
