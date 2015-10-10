@@ -9,6 +9,6 @@ class Report < ActiveRecord::Base
 	before_save :fill_report
 
 	def fill_report
-	  self.report = Word.all.as_json
+	  self.report = Word.order(word: :asc).as_json
 	end 
 end

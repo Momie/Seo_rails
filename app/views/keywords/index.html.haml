@@ -1,0 +1,9 @@
+= form_for "keywords",url: keywords_path,method: "get" do |f|
+  = f.autocomplete_field :key, autocomplete_word_word_keywords_path
+  = f.select :type,[["keywords",1],["Adwords urls",2],["urls",3]]
+  = f.label "Number Of Result"
+  = f.text_field :nb_result
+  = f.submit("Find")
+- if @result.size
+  - @result.map do |p|
+    = p.html_safe

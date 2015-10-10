@@ -18,6 +18,11 @@ class GoogleSearch
   def self.worker key
     # prepared the required object and form
     agent = Mechanize.new
+    # setting mechanize with tor proxy to skip the google limitation
+    agent ||= Mechanize.new do |agt|
+      agt.set_proxy("localhost", 8888)
+    end
+
     page = agent.get("https://www.google.tn/?gws_rd=cr,ssl&ei=aIwXVvLTJ8T9ywOP45rwCA#")
     search_form = page.form_with(:name => "f")
     search_form.field_with(:name => "q").value = key    

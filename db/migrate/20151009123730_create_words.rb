@@ -11,7 +11,7 @@ class CreateWords < ActiveRecord::Migration
         t.integer           :nb_no_adwords
         t.text              :no_adwords_urls
         t.integer           :nb_of_links
-        t.integer           :all_results_count
+        t.string            :all_results_count
         t.text              :html_cache
         t.timestamps null: false
     end

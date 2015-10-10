@@ -3,4 +3,5 @@ class Word < ActiveRecord::Base
 	serialize :right_adwords_urls,Array
 	serialize :no_adwords_urls,Array
 
+
 end

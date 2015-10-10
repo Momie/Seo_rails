@@ -1,0 +1,19 @@
+%h4
+  Report created by :
+  = @report.user.email
+  at
+  = @report.created_at
+%table.table
+  %tr
+    %th
+      Word
+    %th
+      Number Of results
+    %th
+      Number Of Adwords
+  - @report.report.each do |row|
+    %tr
+      %td= row["word"]
+      %td= row["all_results_count"]
+      %td= row["nb_adwords_all"]
+

@@ -1,0 +1,19 @@
+%table.table
+  %tr
+    %th
+      Date
+    %th
+      Created by
+    %th
+      Number Of words
+    %th
+  - @reports.each do |row|
+    %tr
+      %td= row.created_at
+      %td= row.user.email
+      %td= row.report.size
+      %td
+        %a{:href=>report_path(row.id)}
+          View
+
+

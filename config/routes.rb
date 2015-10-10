@@ -13,13 +13,10 @@ Rails.application.routes.draw do
     #Routes for web devices
   resources :reports
   resources :keywords , only: :index do
+    get :autocomplete_word_word, :on => :collection
     collection do
       post  'upload'
       get   'upload_file'
-      get   'find'
-     # get   'report'
-     # get   'report/:id'
-      get   'queries'
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
